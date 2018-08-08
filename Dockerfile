@@ -17,9 +17,11 @@ RUN wget http://downloads.mirthcorp.com/connect/$MIRTH_VERSION/mirthconnect-$MIR
     chown -R mirth /opt/mirth-connect && \
     rm -fr /tmp/*
 
+COPY docker-entrypoint.sh /
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
 EXPOSE 8080 8443
 USER mirth
 WORKDIR $MIRTH_HOME
-COPY docker-entrypoint.sh /
-ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["start"]
+
+CMD ["java", "-jar", "mirth-server-launcher.jar"]

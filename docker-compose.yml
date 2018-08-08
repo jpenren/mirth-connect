@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  mirth:
+    image: jpenren/mirth-connect
+    environment:
+        - DATABASE_ENGINE=mysql
+        - DATABASE_URL=jdbc:mysql://mysqldb:3306/mirthdb
+        - DATABASE_USERNAME=mirth
+        - DATABASE_PASSWORD=mirth
+    ports:
+        - 8080:8080
+        - 8443:8443
+  
+  mysql:
+     image: mysql:5.7
+     container_name: mysqldb
+     environment:
+       - MYSQL_ROOT_PASSWORD=admin
+       - MYSQL_DATABASE=mirthdb
+       - MYSQL_USER=mirth
+       - MYSQL_PASSWORD=mirth
+     ports:
+       - 3306:3306
