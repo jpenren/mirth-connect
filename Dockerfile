@@ -2,7 +2,7 @@ FROM openjdk:8u131-jre-alpine
 
 # Mirth version compatible with jre 1.8
 # Check compatibility matrix http://www.mirthcorp.com/community/wiki/display/mirth/System+Requirements
-ENV MIRTH_VERSION 3.5.2.b204
+ENV MIRTH_VERSION 2.2.3.6825.b80
 ENV MIRTH_HOME /opt/mirth-connect
 
 # Mirth Connect user (mirth, uid = 1000)
@@ -24,4 +24,4 @@ EXPOSE 8080 8443
 USER mirth
 WORKDIR $MIRTH_HOME
 
-CMD ["java", "-jar", "mirth-server-launcher.jar"]
+CMD ["java", "-jar", "mirth-launcher.jar"]
